@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hate Speech Detection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <style>
+      * {
+        font-family: "Raleway", sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+      }
+      img {
+        height: 130px;
+        position: absolute;
+        top: 60px;
+        right: 340px;
+      }
+      .left-half {
+        flex: 1;
+        background-image: url("fuzzy.jpg");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        padding: 50px;
+      }
+      .right-half {
+        flex: 1;
+        background-image: url(glitter.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 50px;
+      }
+      .new {
+        margin: 0 auto;
+        width: 90px;
+      }
+      .centercontent {
+        position: absolute;
+        max-width: 200%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .frame {
+        width: 90%;
+        margin: 40px auto;
+        text-align: center;
+      }
+      /*
+      button {
+        margin: 30px;
+      }
+      */
+      h3 {
+        color: #348fc2;
+      }
+      .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+
+      /* 1 */
+
+      /* 2 */
+
+      /* 3 */
+
+      /* 5 */
+      .btn-5 {
+        width: 350px;
+        height: 50px;
+        line-height: 42px;
+        top: 100px;
+        left: 165px;
+        padding: 0;
+        margin: 10px;
+        border: none;
+        font-weight: bold;
+        background: rgb(35, 63, 174);
+      }
+      .btn-5:hover {
+        color: #348fc2;
+        background: transparent;
+        box-shadow: none;
+      }
+      .btn-5:before,
+      .btn-5:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #348fc2;
+        box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #348fc2,
+          4px 4px 5px 0px #348fc2;
+        transition: 400ms ease all;
+      }
+      .btn-5:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+      }
+      .btn-5:hover:before,
+      .btn-5:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+      }
+
+      #fname {
+        width: 600px;
+        height: 55px;
+      }
+
+      h1 {
+        color: rgb(242, 239, 239);
+        font-size: 80px;
+        padding-top: 100px;
+      }
+
+      /* Media Queries for Responsive Design */
+      @media only screen and (max-width: 350px) {
+        /* Styles for screens smaller than 600px */
+        .container {
+          display: grid;
+        }
+
+        .left-half {
+          flex: 1;
+          background-image: url("fuzzy.jpg");
+          background-size: cover;
+          background-position: center;
+          color: #fff;
+          padding: 50px;
+        }
+        .right-half {
+          flex: 1;
+          background-image: url(glitter.jpg);
+          background-size: cover;
+          background-position: center;
+          padding: 50px;
+        }
+
+        img {
+          position: relative;
+          margin: 20px auto;
+        }
+
+        h1 {
+          font-size: 40px;
+          padding-top: 50px;
+          text-align: center;
+        }
+
+        #fname {
+          width: 100%;
+          max-width: 300px;
+          margin: 20px auto;
+        }
+
+        .frame {
+          margin: 20px auto;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="container">
+      <div class="left-half"></div>
+      <div class="right-half">
+        <div class="new">
+          <h3>Input File</h3>
+          <input class="" type="file" />
+        </div>
+        <br />
+        <button class="custom-btn btn-5"><span>Hypergraph</span></button>
+        <br />
+        <button class="custom-btn btn-5"><span>Dilation(Edges)</span></button>
+        <br />
+        <button class="custom-btn btn-5"><span>Dilation(Nodes)</span></button>
+        <br />
+        <button class="custom-btn btn-5"><span>Erosion(Edges)</span></button>
+        <br />
+        <button class="custom-btn btn-5"><span>Erosion(Nodes)</span></button>
+        <br />
+        <button class="custom-btn btn-5"><span>Output</span></button>
+      </div>
+    </div>
+  </body>
+</html>
