@@ -5,10 +5,10 @@ Nowadays people use social media to express their opinions or to raise views etc
 the effects of social media by  using disgust words, insult people on the basis of sex, cast, religion etc.These kind of abuses affects people in a lot of ways especially mentally and physically. These made us to come up and implement an idea based on this
                                                      Hate Speech Detection in Twitter
                                      ![Screenshot 2023-05-02 001654](https://user-images.githubusercontent.com/74092233/235515445-0176c768-8840-40d6-9505-e77213d8012f.png)
- Predict - Actually helps us to identify whether a particular tweet is hate Speech or not
+                              Predict - Actually helps us to identify whether a particular tweet is hate Speech or not
                                                      Prediction Page
                                     ![Desktop - 16](https://user-images.githubusercontent.com/74092233/235515944-1dfc4008-06df-4a7d-91be-3579f425c52c.png)
-                                                     Fuzzy Page       
+                              Fuzzy Page - Different medthodologies have been applied inorder to obtain the best results.   
                                        ![Screenshot 2023-05-02 002803](https://user-images.githubusercontent.com/74092233/235517383-1c127537-7a5a-471c-8f02-f4f3af40d998.png)
         
  
@@ -27,7 +27,17 @@ The main impacts in the project are SVM, Logistic Regression, Random Forest, CNN
                                                    Technologies Used:
 1) Machine Learning Algorithms
 2) Flask
-3) HTML,CSS,Javascript
+3) HTML,CSS
+4) Python 
+5) Javascript   
+
+                                                    Contributors
+1)Anagha Abraham
+2)Anugraha Antoo
+3)Antony J Kolenchery
+4)Binil Tom Jose
+                                                    
+                                                   
 
 
 
