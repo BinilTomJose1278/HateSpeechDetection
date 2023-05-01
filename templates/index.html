@@ -160,6 +160,7 @@
           padding-top: 50px;
           text-align: center;
         }
+       
 
         #fname {
           width: 100%;
@@ -186,14 +187,16 @@
       <div class="right-half">
         <img src="twitter.png" alt="" />
         <h1>Enter your Tweet</h1>
-        <form action="/Predict" method="=post">
+        <form action="/Tpred" method="post">
           <p><input type="text" name="tweet" /></p>
           <p><input type="submit" value="submit" /></p>
+          
+          <h1>SVM : {{mod1}}</h1>
+          <h1>RF :  {{mod2}}</h1>
+          <h1>LR : {{mod3}}</h1>
         </form>
 
-        <form action="/Tpred" method="=post">
-          <h1>{{usr}}</h1>
-        </form>
+        
 
         <!--... <div class="frame">
           <button class="custom-btn btn-5"><span>Predict</span></button>
