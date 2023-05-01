@@ -1,4 +1,4 @@
-                                                                    Story:
+                           Story:
 In the modern world people use social media to express their opinions ,to raise views  etc, but people nowadays take the privelage of misusing the 
 the effects of social media by  using disgust words, insult people on the basis of sex, cast, religion etc.These kind of abuses affects people in a lot of ways especially mentally
 and physically. These made us to come up and implement an idea based on this.
