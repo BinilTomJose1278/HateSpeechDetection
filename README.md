@@ -6,7 +6,6 @@ the effects of social media by  using disgust words, insult people on the basis 
                                                      Hate Speech Detection in Twitter
                                      ![Screenshot 2023-05-02 001654](https://user-images.githubusercontent.com/74092233/235515445-0176c768-8840-40d6-9505-e77213d8012f.png)
  Predict - Actually helps us to identify whether a particular tweet is hate Speech or not
- Fuzzy- Classifies.
                                                      Prediction Page
                                     ![Desktop - 16](https://user-images.githubusercontent.com/74092233/235515944-1dfc4008-06df-4a7d-91be-3579f425c52c.png)
                                                      Fuzzy Page       
