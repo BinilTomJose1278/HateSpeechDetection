@@ -20,6 +20,21 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow: hidden;
+    }
+    .action1 {
+      border: none;
+      outline: none;
+      color: black;
+      font-weight: bolder;
+      background-color: #348fc2;
+    }
+    .action2 {
+      border: none;
+      outline: none;
+      color: black;
+      font-weight: bolder;
+      background-color: #348fc2;
     }
     div.topdiv {
       clear: both;
@@ -66,7 +81,6 @@
     }
     */
     .custom-btn {
-    
       width: 130px;
       height: 40px;
       color: #ffffff;
@@ -92,7 +106,6 @@
 
     /* 5 */
     .btn-5 {
-      
       width: 130px;
       height: 40px;
       line-height: 42px;
@@ -207,38 +220,63 @@
         </h1>
         <p>"A platform to detect all the hate words from a tweet"</p>
 
-
         <div class="frame">
-          <div style = "position:relative; right:150px;">
-          <form action="/Predict" method="POST">
-          <button class="custom-btn btn-5">
+          <div
+            style="position: relative; right: 100px; width: 200px; left: 500px"
+          >
+            <form action="/Predict" method="POST">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action1"
+                  type="submit"
+                  value="Predict"
+                  name="action1"
+                />
+              </button>
+            </form>
+          </div>
 
-           <input type="submit" value="Predict" name="action1" />
-          </button>
-          </form>
+          <div
+            style="position: relative; left: 675px; bottom: 40px; width: 200px"
+          >
+            <form action="/Fuzzy" method="POST">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Fuzzy"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
         </div>
 
-        <div style = "position:relative; left:150px;bottom: 40px;">
-          <form action="/Fuzzy" method="POST">
-
-          <button class="custom-btn btn-5">
-            <input type="submit" value="Fuzzy" name="action2"/>
-          </button>
-          </form>
-        </div>
-        </div>
-
-
-        <img class="first" src="{{url_for('static', filename='twitter.png')}}" />
-        <img class="second" src="{{url_for('static', filename='twitter.png')}}" />
-        <img class="third" src="{{url_for('static', filename='twitter.png')}}" />
-        <img class="fourth" src="{{url_for('static', filename='twitter.png')}}" />
+        <img
+          class="first"
+          src="{{url_for('static', filename='twitter.png')}}"
+        />
+        <img
+          class="second"
+          src="{{url_for('static', filename='twitter.png')}}"
+        />
+        <img
+          class="third"
+          src="{{url_for('static', filename='twitter.png')}}"
+        />
+        <img
+          class="fourth"
+          src="{{url_for('static', filename='twitter.png')}}"
+        />
       </div>
-     
-      <div class="bottomdiv">
-        <img src="{{url_for('static', filename='bott.jpg')}}" height="100%" width="100%"  />
-      </div>
 
+      <div class="rightdiv">
+        <img
+          src="{{url_for('static', filename='1.jpg')}}"
+          height="100%"
+          width="100%"
+        />
+      </div>
     </div>
   </body>
 </html>
