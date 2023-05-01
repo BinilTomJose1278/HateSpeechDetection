@@ -66,6 +66,7 @@
     }
     */
     .custom-btn {
+    
       width: 130px;
       height: 40px;
       color: #ffffff;
@@ -91,6 +92,7 @@
 
     /* 5 */
     .btn-5 {
+      
       width: 130px;
       height: 40px;
       line-height: 42px;
@@ -204,13 +206,19 @@
           Hate Speech Detection in <br />Twitter using Machine Learning
         </h1>
         <p>"A platform to detect all the hate words from a tweet"</p>
+
+
         <div class="frame">
+          <div style = "position:relative; right:150px;">
           <form action="/Predict" method="POST">
           <button class="custom-btn btn-5">
-           <!--<a href="index.html"><span>Predict</span></a>-->
+
            <input type="submit" value="Predict" name="action1" />
           </button>
           </form>
+        </div>
+
+        <div style = "position:relative; left:150px;bottom: 40px;">
           <form action="/Fuzzy" method="POST">
 
           <button class="custom-btn btn-5">
@@ -218,14 +226,19 @@
           </button>
           </form>
         </div>
-        <img class="first" src="twitter.png" alt="" />
-        <img class="second" src="twitter.png" alt="" />
-        <img class="third" src="twitter.png" alt="" />
-        <img class="fourth" src="twitter.png" alt="" />
+        </div>
+
+
+        <img class="first" src="{{url_for('static', filename='twitter.png')}}" />
+        <img class="second" src="{{url_for('static', filename='twitter.png')}}" />
+        <img class="third" src="{{url_for('static', filename='twitter.png')}}" />
+        <img class="fourth" src="{{url_for('static', filename='twitter.png')}}" />
       </div>
+     
       <div class="bottomdiv">
-        <img class="firstpic" src="1.jpg" alt="" />
+        <img src="{{url_for('static', filename='bott.jpg')}}" height="100%" width="100%"  />
       </div>
+
     </div>
   </body>
 </html>

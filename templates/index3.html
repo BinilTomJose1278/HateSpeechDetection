@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+   
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+     
+        .column {
+          float: left;
+          width: 33.33%;
+          padding: 10px;
+          height: 300px; 
+        }
+        
+       
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        </style>
+        </head>
+        <body>
+        
+        <h2>Results</h2>
+        <form action="/op" method="post">
+        <div class="row">
+          <div class="column" style="background-color:#aaa;">
+            <h2>SVM</h2>
+            <p>{{mod1}}</p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2>Random forest</h2>
+            <p>{{mod2}}</p>
+          </div>
+          <div class="column" style="background-color:#ccc;">
+            <h2>Linear Regresion</h2>
+            <p>{{mod3}}</p>
+          </div>
+        </div>
+    </form>
+        </body>
+  
+</body>
+</html>

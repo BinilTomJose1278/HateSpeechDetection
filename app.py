@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 import pickle
 import re
@@ -73,7 +75,7 @@ def pred():
     mod1=model1(user)
     mod2=model2(user)
     mod3=model3(user)
-    return render_template('index.html',mod1=mod1,mod2=mod2,mod3=mod3)
+    return render_template('index3.html',mod1=mod1,mod2=mod2,mod3=mod3)
 
 
 
