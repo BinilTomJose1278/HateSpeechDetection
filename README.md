@@ -9,11 +9,11 @@ Logistic Regression, Random Forest, CNN-LSTM, Fuzzy Model. The accurate model wi
 
                                                    Main Impacts in the Project:
 The main impacts in the project are SVM, Logistic Regression, Random Forest, CNN-LSTM, Fuzzy
-SVM - Support Vector Machine
-LR- Logistic Regression
-RF- Random Forest
-CNN-LSTM- Covolutional Neural Network and Long-Short Term Memory
-Fuzzy Model
+1)SVM - Support Vector Machine
+2)LR- Logistic Regression
+3)RF- Random Forest
+4)CNN-LSTM- Covolutional Neural Network and Long-Short Term Memory
+5)Fuzzy Model
 
                                                    Technologies Used:
 1) Machine Learning Algorithms
