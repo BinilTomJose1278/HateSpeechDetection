@@ -13,7 +13,7 @@ the effects of social media by  using disgust words, insult people on the basis 
         
  
                                                    What is our Project?
-Our project Hate Speech Detection in twitter , basically collects data from twiiter and detects the hate words using the five models we have implemented basically SVM, 
+Our project Hate Speech Detection in twitter , basically collects data from twitter and detects the hate words using the five models we have implemented basically SVM, 
 Logistic Regression, Random Forest, CNN-LSTM, Fuzzy Model. The accurate model with highest accuracy will be considered as the final result.
 
                                                    Main Impacts in the Project:
