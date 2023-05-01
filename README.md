@@ -8,7 +8,7 @@ the effects of social media by  using disgust words, insult people on the basis 
                               Predict - Actually helps us to identify whether a particular tweet is hate Speech or not
                                                      Prediction Page
                                     ![Desktop - 16](https://user-images.githubusercontent.com/74092233/235515944-1dfc4008-06df-4a7d-91be-3579f425c52c.png)
-                              Fuzzy Page - Different medthodologies have been applied inorder to obtain the best results.   
+                              Fuzzy Page - Different medthods have been applied inorder to obtain the best results.   
                                        ![Screenshot 2023-05-02 002803](https://user-images.githubusercontent.com/74092233/235517383-1c127537-7a5a-471c-8f02-f4f3af40d998.png)
         
  
