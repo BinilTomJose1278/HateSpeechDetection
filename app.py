@@ -35,28 +35,31 @@ def model1(user):
     classifier=pickle.load(pickle_in)
     prediction=classifier.predict(user)
     if prediction==0:
-        return("non hate speech")
+        return("Non Hate Speech")
     else:
-        return("hate speech")
+        return("Hate Speech")
 
 def model2(user):
     pickle_in=open("RF_model (1).pickle","rb")
     classifier=pickle.load(pickle_in)
     prediction=classifier.predict(user)
     if prediction==0:
-        return("non hate speech")
+        return("Non Hate Speech")
     else:
-        return("hate speech")
+        return("Hate Speech")
 
 def model3(user):
     pickle_in=open("LR_model.pickle","rb")
     classifier=pickle.load(pickle_in)
     prediction=classifier.predict(user)
     if prediction==0:
-        return("non hate speech")
+        return("Non Hate Speech")
     else:
-        return("hate speech")
+        return("Hate Speech")
 
+@app.route('/Home')
+def hoe():
+    return render_template('index1.html')
 
 @app.route('/Predict',methods=['GET','POST'])
 def pre():
