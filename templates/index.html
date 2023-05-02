@@ -28,7 +28,7 @@
       }
       .left-half {
         flex: 1;
-        /* background-image: url({{url_for("static", filename= "second.png")}}); -*/
+        background-image: url(../static/second.jpg);
         background-size: cover;
         background-position: center;
         color: #fff;
@@ -54,11 +54,15 @@
         margin: 40px auto;
         text-align: center;
       }
+      .textbox {
+        width: 92%;
+        height: 25px;
+      }
       /*
-    button {
-      margin: 30px;
-    }
-    */
+      button {
+        margin: 30px;
+      }
+      */
       .custom-btn {
         width: 130px;
         height: 40px;
@@ -87,6 +91,9 @@
       /* 3 */
 
       /* 5 */
+      .switch {
+        text-align: center;
+      }
       .btn-5 {
         width: 130px;
         height: 40px;
@@ -119,6 +126,7 @@
         left: 0;
         bottom: 0;
       }
+
       .btn-5:hover:before,
       .btn-5:hover:after {
         width: 100%;
@@ -160,7 +168,6 @@
           padding-top: 50px;
           text-align: center;
         }
-       
 
         #fname {
           width: 100%;
@@ -184,19 +191,18 @@
   <body>
     <div class="container">
       <div class="left-half"></div>
+      <img class="first" src="{{url_for('static', filename='twitter.png')}}" />
       <div class="right-half">
         <img src="twitter.png" alt="" />
         <h1>Enter your Tweet</h1>
         <form action="/Tpred" method="post">
-          <p><input type="text" name="tweet" /></p>
-          <p><input type="submit" value="submit" /></p>
-          
-          <h1>SVM : {{mod1}}</h1>
-          <h1>RF :  {{mod2}}</h1>
-          <h1>LR : {{mod3}}</h1>
+          <p><input class="textbox" type="text" name="tweet" /></p>
+          <div class="switch">
+            <p>
+              <input class="custom-btn btn-5" type="submit" value="submit" />
+            </p>
+          </div>
         </form>
-
-        
 
         <!--... <div class="frame">
           <button class="custom-btn btn-5"><span>Predict</span></button>

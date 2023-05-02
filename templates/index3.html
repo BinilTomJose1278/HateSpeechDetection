@@ -1,54 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Results</title>
-</head>
-<body>
-   
+  </head>
+  <body>
     <style>
-        * {
-          box-sizing: border-box;
+      article {
+        --img-scale: 1.001;
+        --title-color: black;
+        --link-icon-translate: -20px;
+        --link-icon-opacity: 0;
+        position: relative;
+        border-radius: 16px;
+        box-shadow: none;
+        background: #fff;
+        transform-origin: center;
+        transition: all 0.4s ease-in-out;
+        overflow: hidden;
+      }
+
+      article a::after {
+        position: absolute;
+        inset-block: 0;
+        inset-inline: 0;
+        cursor: pointer;
+        content: "";
+      }
+
+      /* basic article elements styling */
+      article h2 {
+        margin: 0 0 18px 0;
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.9rem;
+        letter-spacing: 0.06em;
+        color: var(--title-color);
+        transition: color 0.3s ease-out;
+        color: #36c6bf;
+      }
+
+      figure {
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+
+      article img {
+        max-width: 100%;
+        transform-origin: center;
+        transform: scale(var(--img-scale));
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .article-body {
+        padding: 24px;
+        background-color: black;
+        color: aliceblue;
+      }
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
+      article a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #28666e;
+      }
+
+      article a:focus {
+        outline: 1px dotted #28666e;
+      }
+
+      article a .icon {
+        min-width: 24px;
+        width: 24px;
+        height: 24px;
+        margin-left: 5px;
+        transform: translateX(var(--link-icon-translate));
+        opacity: var(--link-icon-opacity);
+        transition: all 0.3s;
+      }
+
+      /* using the has() relational pseudo selector to update our custom properties */
+      article:has(:hover, :focus) {
+        --img-scale: 1.1;
+        --title-color: #28666e;
+        --link-icon-translate: 0;
+        --link-icon-opacity: 1;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+          rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      }
+
+      /************************ 
+Generic layout (demo looks)
+**************************/
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 0;
+        font-family: "Figtree", sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 0%,
+          rgba(0, 212, 255, 1) 100%
+        );
+        min-height: 100vh;
+        align-content: center;
+      }
+
+      .articles {
+        display: grid;
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 24px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+      }
+
+      @media screen and (max-width: 960px) {
+        article {
+          container: card/inline-size;
         }
-        
-     
-        .column {
-          float: left;
-          width: 33.33%;
-          padding: 10px;
-          height: 300px; 
+        .article-body p {
+          display: none;
         }
-        
-       
-        .row:after {
-          content: "";
-          display: table;
-          clear: both;
+      }
+
+      @container card (min-width: 380px) {
+        .article-wrapper {
+          display: grid;
+          grid-template-columns: 100px 1fr;
+          gap: 16px;
         }
-        </style>
-        </head>
-        <body>
-        
-        <h2>Results</h2>
-        <form action="/op" method="post">
-        <div class="row">
-          <div class="column" style="background-color:#aaa;">
+        .article-body {
+          padding-left: 0;
+        }
+        figure {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        figure img {
+          height: 100%;
+          aspect-ratio: 1;
+          object-fit: cover;
+        }
+      }
+
+      .sr-only:not(:focus):not(:active) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+    </style>
+    <section class="articles">
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img
+              class="center"
+              src="{{url_for('static', filename='twitter.png')}} "
+              width="200px"
+            />
+          </figure>
+          <div class="article-body">
             <h2>SVM</h2>
             <p>{{mod1}}</p>
-          </div>
-          <div class="column" style="background-color:#bbb;">
-            <h2>Random forest</h2>
-            <p>{{mod2}}</p>
-          </div>
-          <div class="column" style="background-color:#ccc;">
-            <h2>Linear Regresion</h2>
-            <p>{{mod3}}</p>
+            <a href="#" class="read-more">
+              Read more <span class="sr-only">about this is some title</span>
+            </a>
           </div>
         </div>
-    </form>
-        </body>
-  
-</body>
+      </article>
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img
+              class="center"
+              src="{{url_for('static', filename='twitter.png')}} "
+              width="200px"
+            />
+          </figure>
+          <div class="article-body">
+            <h2>Logistic Regression</h2>
+            <p>{{mod2}}</p>
+            <a href="#" class="read-more">
+              Read more <span class="sr-only">about this is some title</span>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img
+              class="center"
+              src="{{url_for('static', filename='twitter.png')}} "
+              width="200px"
+            />
+          </figure>
+          <div class="article-body">
+            <h2>Random Forest</h2>
+            <p>{{mod3}}</p>
+            <a href="#" class="read-more">
+              Read more <span class="sr-only">about this is some title</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </body>
 </html>

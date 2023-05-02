@@ -58,8 +58,6 @@ def model3(user):
         return("hate speech")
 
 
-
-
 @app.route('/Predict',methods=['GET','POST'])
 def pre():
     return render_template('index.html')
