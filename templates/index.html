@@ -7,6 +7,8 @@
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://kit.fontawesome.com/06d83087a8.js" crossorigin="anonymous"></script>
+   
     <style>
       * {
         font-family: "Raleway", sans-serif;
@@ -20,6 +22,9 @@
         flex-wrap: wrap;
         height: 100vh;
       }
+    .fa-solid fa-house{
+      background-color: aqua;
+    }
       img {
         height: 130px;
         position: absolute;
@@ -58,6 +63,9 @@
         width: 92%;
         height: 25px;
       }
+      .homestyle{
+        background-color: #348fc2;
+      }
       /*
       button {
         margin: 30px;
@@ -81,6 +89,9 @@
           4px 4px 5px 0px rgba(0, 0, 0, 0.1);
         outline: none;
       }
+      .firstpic{
+         background-color: #348fc2;
+      }
       p {
         color: wheat;
       }
@@ -93,6 +104,7 @@
       /* 5 */
       .switch {
         text-align: center;
+        
       }
       .btn-5 {
         width: 130px;
@@ -140,7 +152,7 @@
 
       h1 {
         color: rgb(242, 239, 239);
-        font-size: 80px;
+        font-size: 70px;
         padding-top: 100px;
       }
 
@@ -161,6 +173,12 @@
         img {
           position: static;
           margin: 20px auto;
+        }
+        .first{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 80%;
         }
 
         h1 {
@@ -194,14 +212,14 @@
       <img class="first" src="{{url_for('static', filename='twitter.png')}}" />
       <div class="right-half">
         <img src="twitter.png" alt="" />
-        <h1>Enter your Tweet</h1>
+        <h1 class="resize">Enter your Tweet</h1>
         <form action="/Tpred" method="post">
           <p><input class="textbox" type="text" name="tweet" /></p>
-          <div class="switch">
+       <div class="switch">
             <p>
               <input class="custom-btn btn-5" type="submit" value="submit" />
             </p>
-          </div>
+         
         </form>
 
         <!--... <div class="frame">
@@ -209,8 +227,11 @@
         </div>
         -->
         <form action="/Home">
-          <p><input  class="custom-btn btn-5" type="submit" value="Home" /></p>
+      <p>
+        <button class ="custom-btn btn-5 home"type="submit" value="Home" ><i class="fa-solid fa-house"></i></button></p>
         </form>
+        
+      </div>
       </div>
      
     </div>
