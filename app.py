@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,send_file
 import nltk
-import hypernetx as hnx
+
+0.import hypernetx as hnx
 import matplotlib.pyplot as plt
 nltk.download('stopwords')
 from nltk.corpus import stopwords
