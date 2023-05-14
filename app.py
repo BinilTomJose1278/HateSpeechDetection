@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash,send_file
 import nltk
+import hypernetx as hnx
+import matplotlib.pyplot as plt
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+import pandas as pd
 import pickle
 import re
+import io
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 app = Flask(__name__)
@@ -12,9 +16,98 @@ usr=""
 port_stem = PorterStemmer()
 stop_words = set(stopwords.words('english')) - set(['not','no','don\'t','n\'t'])
 
+
+#divide words to cases
+#case 1 :  Not hate word
+#case 2 : Hate word
+#case 3 : Hate word, but depends on context
+#case 4 : possibility of hate word, nbut high indeterminancy
+#case 5 : not hate hate word, but depends on context
+
+case1=['want','gonna','stop','apart','done','insid','bye','felicia','use','would','king','kong','insert','basebal','bat','male','domest','cell','she','still','thing','think','absolut','already','sun','readi','share','complet','meet','heaven','eat','abl','sayin','start','might','yo','forget','sooooooo','anoth','urself','privladg','ur','finish','read','amaz','book','recommend','love','spend','time','famili','friend','grate','opportun','far','great','workout','gym','today','excit','try','new','recip','dinner','tonight','music','favorit','artist','proud','hard','work','put','achieve','goal','kind','respect','norm','import','take','care','health','watch','inspir','ted','talk','feel','motiv','support','life','walk','alway','help','clear','mind','educ','key','travel','see','world','one','day','other','let','focu','unit','us','rather','divid','beauti','like','make','differ','someon','good','idea','learn','skill','keep','hous','apt','cold','hobbi','fulfil','break','must','bodi','refresh','benefici','cracker','somehow','avoid','get','shone','fr','bought','ah','sub','da','corner','sto','easi','dream','rememb','joyou','nazi','tell','bath','sorri','desir','say','abolish','gettin','gang','bred','beta',
+'rough','ball','yeah','cleanin','deep','load','sweat','drippin','total','final','url','gettin','pleas','send','video','surround','also','follow','drool','bad','commun']
+
+case2=['rape','boipussi','white','goat','fucker','brutalis','suck','slutti','whore','sex','fat','homo','dumb','shit','dead','racist','hoe','bitch','pussi','stupid','ugli','ass','divers','give','back','nigga','gay','fuck','bash','cunt','filthi','dirti','cock','cum','floodin','slut','dildo']
+
+case3=['bull','terrorist','kill','thick','breed','swear','useless','spit','clout','drug','feend','bore','social','part','death','run','power','countri','greedi','bottom']
+
+
+case4=['hole','cri','german','disgust','pound','smash','capri','sever','femal','choke','gal','men','hang','beat','lil','closet','mental','spread','inclus','penalti','short','first','freaki','punch','face','muslim','illeg','christian','daddi']
+
+case5=['wish','huge','no','call','damn','photo','free','enjoy','deserv','not','except','peopl','go','outsid','unlock','potenti','small','act','make','out','father','big','posit','black','way',
+]
+
+
+#create subhypergraph from a threshold
+c={}
+speech=[]
+erosion=[] 
+hatespeech=[]
+nonhatespeech=[]
+listx=[]
+listy=[]
+listk=[]
+listr=[]
+
 @app.route('/')
 def home():
     return render_template('index1.html')
+
+
+x={}
+a=-1
+def graph(s):
+  global a,x
+  word_list = s.split()
+  a+=1
+  x[a]=word_list
+
+def graph1(s):
+
+  global a,c
+  
+  word_list = s.split()
+  a+=1
+  c[a]=word_list
+
+def weights(x):
+  t=0
+  y=0
+  f=0
+  c=0
+  words=x.split()
+  for i in words:
+    c=c+1
+    if i in case1:
+      r=0
+      if(t<r):
+        t=r
+      y=y+0
+      f=f+1
+    elif i in case2:
+      t=1
+
+    elif i in case3:
+      t=1
+      y=y+0.5
+    elif i in case4:
+      r=0.5
+      if(t<r):
+        t=r
+      y=y+1
+    elif i in case5:
+      y=y+0.5
+      f=f+1
+  speech.append(x)
+  erosion.append(x)
+  if((t>0.8 and y>0.3)):
+    print(x," : hate speech")
+    graph1(x)
+    hatespeech.append(x)
+   
+  else:
+    print(x," : non hate speech")
+    nonhatespeech.append(x)
 
 def cleantext(text):
   x=str(text).lower().replace('\\','').replace('_','')
@@ -79,8 +172,83 @@ def pred():
     return render_template('index3.html',mod1=mod1,mod2=mod2,mod3=mod3)
 
 
+@app.route('/upload', methods=['POST'])
+def upload():
+    global a
+    a=-1
+    csv_file=request.files['csv']
+    df = pd.read_csv(csv_file)
+    data=df.iloc[:, 0]
+    data=data.apply(lambda x:cleantext(x))
+    data= data.apply(stemming)
+    d=data.apply(lambda y:graph(y))
+    d=data.apply(lambda z:weights(z))
+    return('',204)
+   
+@app.route('/hypergraph1', methods=['POST'])
+def hypergraph():
+    # Generate the URL for the image file
+    G = hnx.Hypergraph(x)
+    # Draw the graph using matplotlib
+    fig, ax = plt.subplots()
+    hnx.draw(G, ax=ax)
 
+    # Save the plot to an image file
+    png_output = io.BytesIO()
+    fig.savefig(png_output, format='png')
+    png_output.seek(0)
+
+    # Send the PNG file to the client
+    return send_file(png_output, mimetype='image/png')
+
+@app.route('/hypergraph2', methods=['POST'])
+def hypergraph2():
+    G = hnx.Hypergraph(c)
+    # Draw the graph using matplotlib
+    fig, ax = plt.subplots()
+    hnx.draw(G, ax=ax)
+
+    # Save the plot to an image file
+    png_output = io.BytesIO()
+    fig.savefig(png_output, format='png')
+    png_output.seek(0)
+
+    # Send the PNG file to the client
+    return send_file(png_output, mimetype='image/png')
+
+@app.route('/Dilation')
+def dilation():
+   #w.r.t nodes
+   global listx
+   for i in hatespeech:
+        words=i.split()
+   for j in words:
+        if j not in listx:
+            listx.append(j)
+   return render_template('dilation.html',listx1=listx)
+    
+@app.route('/Erosion')
+def erosion1():  
+   #erosion w.r.t nodes
+
+    for i in nonhatespeech:
+        words=i.split()
+        for j in words:
+            if j not in listk:
+                listk.append(j)
+    for i in listx:
+        if i not in listk:
+            listr.append(i)
+    for i in listx:
+        for j in erosion:
+            words=j.split()
+        if i in words:
+            listy.append(j)
+
+
+    return render_template('erosion.html',listy1=listy,speech1=speech)
  
+   
 @app.route('/Fuzzy',methods=['POST'])
 def fuz():
     return render_template('index2.html')

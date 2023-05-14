@@ -203,21 +203,45 @@
       <div class="left-half"></div>
       <div class="right-half">
         <div class="new">
-          <h3>Input File</h3>
-          <input class="" type="file" />
+          <form action="\upload" method="post" enctype="multipart/form-data">
+            <input type="file"  name="csv">
+            <input type="submit" value="Upload">
+          </form>
         </div>
-        <br />
-        <button class="custom-btn btn-5"><span>Hypergraph</span></button>
-        <br />
-        <button class="custom-btn btn-5"><span>Dilation(Edges)</span></button>
-        <br />
-        <button class="custom-btn btn-5"><span>Dilation(Nodes)</span></button>
-        <br />
-        <button class="custom-btn btn-5"><span>Erosion(Edges)</span></button>
-        <br />
-        <button class="custom-btn btn-5"><span>Erosion(Nodes)</span></button>
-        <br />
-        <button class="custom-btn btn-5"><span>Output</span></button>
+        <form action="/hypergraph1" method="post">
+
+          <button class="custom-btn btn-5">
+            <input type="submit" value="Main Hypergraph " name="action2"/>
+          </button>
+          </form>
+
+          <form action="/hypergraph2" method="post">
+
+            <button class="custom-btn btn-5">
+              <input type="submit" value="Hypergraph X" name="action2"/>
+            </button>
+            </form>
+          <form action="/Dilation">
+
+            <button class="custom-btn btn-5">
+              <input type="submit" value="Dilation" name="action2"/>
+            </button>
+            </form>
+
+            <form action="/Erosion">
+
+              <button class="custom-btn btn-5">
+                <input type="submit" value="Erosion" name="action2"/>
+              </button>
+              </form>
+
+              <form action="/Output">
+
+                <button class="custom-btn btn-5">
+                  <input type="submit" value="Output" name="action2"/>
+                </button>
+                </form>
+      
       </div>
     </div>
   </body>
