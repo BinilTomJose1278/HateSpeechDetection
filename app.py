@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,send_file
 import nltk
 
-0.import hypernetx as hnx
+import hypernetx as hnx
 import matplotlib.pyplot as plt
 nltk.download('stopwords')
 from nltk.corpus import stopwords
@@ -49,7 +49,7 @@ listx=[]
 listy=[]
 listk=[]
 listr=[]
-
+listg=[]
 @app.route('/')
 def home():
     return render_template('index1.html')
@@ -62,6 +62,15 @@ def graph(s):
   word_list = s.split()
   a+=1
   x[a]=word_list
+
+
+x1={}
+
+def graph3(s):
+  global a,x
+  word_list = s.split()
+  a+=1
+  x1[a]=word_list
 
 def graph1(s):
 
@@ -217,7 +226,7 @@ def hypergraph2():
     # Send the PNG file to the client
     return send_file(png_output, mimetype='image/png')
 
-@app.route('/Dilation')
+@app.route('/Dilationnodes')
 def dilation():
    #w.r.t nodes
    global listx
@@ -226,12 +235,25 @@ def dilation():
    for j in words:
         if j not in listx:
             listx.append(j)
-   return render_template('dilation.html',listx1=listx)
+   return render_template('dilationnodes.html',listx1=listx)
+
+@app.route('/Dilationedges')
+def dilation1():
+   #w.r.t edges
+   global listx,listg
+   for i in listx:
+    for j in speech:
+
+      words=j.split()
+      if i in words:
+        if j not in listg:
+          listg.append(j)
+   return render_template('dilationedges.html',listx1=listg)
     
-@app.route('/Erosion')
+@app.route('/Erosionnodes')
 def erosion1():  
    #erosion w.r.t nodes
-
+    global nonhatespeech,listk,listx,erosion,listy
     for i in nonhatespeech:
         words=i.split()
         for j in words:
@@ -240,15 +262,53 @@ def erosion1():
     for i in listx:
         if i not in listk:
             listr.append(i)
+    return render_template('erosionnodes.html',listy1=listr)
+
+@app.route('/Erosionedges')
+def erosion2(): 
     for i in listx:
         for j in erosion:
             words=j.split()
-        if i in words:
-            listy.append(j)
+            if i in words:
+              if j not in listy:
+                listy.append(j)
+    return render_template('erosionedges.html',speech1=listy)
+@app.route('/output')
+def output1():
+  for i in hatespeech:
+    words=i.split()
+    for j in words:
+      for y in speech:
+        wordslist=y.split()
+        if j in wordslist:
+          speech.remove(y)
+  return render_template('output.html',speech1=speech)
+   
+@app.route('/outputgraph')
+def output2():
+  global a
 
+  for i in hatespeech:
+    words=i.split()
+    for j in words:
+      for y in speech:
+        wordslist=y.split()
+        if j in wordslist:
+          speech.remove(y)
+  for i in speech:
+    graph3(i)
+  G = hnx.Hypergraph(x1)
+    # Draw the graph using matplotlib
+  fig, ax = plt.subplots()
+  hnx.draw(G, ax=ax)
 
-    return render_template('erosion.html',listy1=listy,speech1=speech)
- 
+    # Save the plot to an image file
+  png_output = io.BytesIO()
+  fig.savefig(png_output, format='png')
+  png_output.seek(0)
+
+    # Send the PNG file to the client
+  return send_file(png_output, mimetype='image/png')
    
 @app.route('/Fuzzy',methods=['POST'])
 def fuz():

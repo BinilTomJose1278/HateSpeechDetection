@@ -154,7 +154,7 @@
 
         .left-half {
           flex: 1;
-          background-image: url("fuzzy.jpg");
+          background-image: url("/static/fuzzy.jpg");
           background-size: cover;
           background-position: center;
           color: #fff;
@@ -221,31 +221,41 @@
               <input type="submit" value="Hypergraph X" name="action2"/>
             </button>
             </form>
-          <form action="/Dilation">
+          <form action="/Dilationnodes">
 
             <button class="custom-btn btn-5">
-              <input type="submit" value="Dilation" name="action2"/>
+              <input type="submit" value="Dilation w.r.t nodes" name="action2"/>
             </button>
             </form>
-
-            <form action="/Erosion">
+            <form action="/Dilationedges">
 
               <button class="custom-btn btn-5">
-                <input type="submit" value="Erosion" name="action2"/>
+                <input type="submit" value="Dilation w.r.t edges" name="action2"/>
               </button>
               </form>
+            <form action="/Erosionnodes">
 
-              <form action="/Output">
+              <button class="custom-btn btn-5">
+                <input type="submit" value="Erosion w.r.t nodes" name="action2"/>
+              </button>
+              </form>
+              <form action="/Erosionedges">
+
+                <button class="custom-btn btn-5">
+                  <input type="submit" value="Erosion w.r.t edges" name="action2"/>
+                </button>
+                </form>
+              <form action="/output">
 
                 <button class="custom-btn btn-5">
                   <input type="submit" value="Output" name="action2"/>
                 </button>
                 </form>
 
-                <form action="/Output">
+                <form action="/outputgraph">
 
                   <button class="custom-btn btn-5">
-                    <input type="submit" value="Final Fuzzy Output" name="action2"/>
+                    <input type="submit" value="Final Fuzzy Output Hypergraph" name="action2"/>
                   </button>
                   </form>
       
