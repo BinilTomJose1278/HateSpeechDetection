@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hate Speech Detection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <style>
+      * {
+        font-family: "Raleway", sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+      }
+      img {
+        height: 130px;
+        position: absolute;
+        top: 60px;
+        right: 340px;
+      }
+      .left-half {
+        flex: 1;
+        background-image: url(../static/new.avif);
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        padding: 50px;
+      }
+      .right-half {
+        flex: 1;
+        background-image: url(../static/glitter.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+      }
+      .new {
+        padding-bottom: 30px;
+        margin: 0 auto;
+        width: 90px;
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .centercontent {
+        position: absolute;
+        max-width: 200%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .frame {
+        width: 90%;
+        margin: 40px auto;
+        text-align: center;
+      }
+      /*
+                button {
+                  margin: 30px;
+                }
+                */
+      h3 {
+        color: #348fc2;
+      }
+      .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+
+      /* 1 */
+
+      /* 2 */
+
+      /* 3 */
+
+      /* 5 */
+      .btn-5 {
+        width: 300px;
+        height: 50px;
+        line-height: 42px;
+        padding: 0;
+        margin: 10px;
+        border: none;
+        font-weight: bold;
+        background-color: #5b6ff0;
+        background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
+      }
+      .btn-5:hover {
+        color: white;
+        background: transparent;
+        box-shadow: none;
+      }
+      .action2 {
+        background-color: #00800000;
+        border: none;
+        outline: none;
+        color: rgb(255, 253, 253);
+        font-weight: bolder;
+      }
+      .btn-5:before,
+      .btn-5:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #348fc2;
+        box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #348fc2,
+          4px 4px 5px 0px #348fc2;
+        transition: 400ms ease all;
+      }
+      .btn-5:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+      }
+      .btn-5:hover:before,
+      .btn-5:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+      }
+      .file-btn-style {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #e0e0e0;
+        color: #333;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .upload-btn-style {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #5b6ff0;
+        background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding-right: 20px;
+        align-items: center;
+        box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #348fc2,
+          4px 4px 5px 0px #348fc2;
+        transition: 400ms ease all;
+      }
+
+      #fname {
+        width: 600px;
+        height: 55px;
+      }
+
+      h1 {
+        color: rgb(242, 239, 239);
+        font-size: 80px;
+        padding-top: 100px;
+      }
+
+      /* Media Queries for Responsive Design */
+      @media only screen and (max-width: 350px) {
+        /* Styles for screens smaller than 600px */
+        .container {
+          display: grid;
+        }
+
+        .left-half {
+          flex: 1;
+          background-image: url("/static/fuzzy.jpg");
+          background-size: cover;
+          background-position: center;
+          color: #fff;
+          padding: 50px;
+        }
+        .right-half {
+          flex: 1;
+          background-image: url("/static/glitter.jpg");
+          background-size: cover;
+          background-position: center;
+          padding: 50px;
+        }
+
+        img {
+          position: relative;
+          margin: 20px auto;
+        }
+
+        h1 {
+          font-size: 40px;
+          padding-top: 50px;
+          text-align: center;
+        }
+
+        #fname {
+          width: 100%;
+          max-width: 300px;
+          margin: 20px auto;
+        }
+
+        .frame {
+          margin: 20px auto;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="container">
+      <div class="left-half"></div>
+      <div class="right-half">
+        <div class="new">
+          <form action="\upload" method="post" enctype="multipart/form-data">
+            <input class="file-btn-style" type="file" name="csv" />
+            <input class="upload-btn-style" type="submit" value="Upload" />
+          </form>
+        </div>
+        <div class="grid-container">
+          <div class="grid-item">
+            <form action="/hypergraph1" method="post">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Main Hypergraph "
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/hypergraph2" method="post">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Hypergraph X"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/hypergraph2" method="post">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Hypergraph X"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/Dilationnodes">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Dilation w.r.t nodes"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+
+          <div class="grid-item">
+            <form action="/Dilationedges">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Dilation w.r.t edges"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/Erosionnodes">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Erosion w.r.t nodes"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/Erosionedges">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Erosion w.r.t edges"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/output">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Output"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+          <div class="grid-item">
+            <form action="/outputgraph">
+              <button class="custom-btn btn-5">
+                <input
+                  class="action2"
+                  type="submit"
+                  value="Final Fuzzy Output Hypergraph"
+                  name="action2"
+                />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

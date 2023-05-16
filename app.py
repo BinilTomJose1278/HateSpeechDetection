@@ -52,7 +52,7 @@ listr=[]
 listg=[]
 @app.route('/')
 def home():
-    return render_template('index1.html')
+    return render_template('homepage.html')
 
 
 x={}
@@ -162,11 +162,11 @@ def model3(user):
 
 @app.route('/Home')
 def hoe():
-    return render_template('index1.html')
+    return render_template('homepage.html')
 
 @app.route('/Predict',methods=['GET','POST'])
 def pre():
-    return render_template('index.html')
+    return render_template('prediction.html')
 
 @app.route('/Tpred',methods=['GET','POST'])
 def pred():
@@ -179,7 +179,7 @@ def pred():
     mod1=model1(user)
     mod2=model2(user)
     mod3=model3(user)
-    return render_template('index3.html',mod1=mod1,mod2=mod2,mod3=mod3)
+    return render_template('modeloutput.html',mod1=mod1,mod2=mod2,mod3=mod3)
 
 
 @app.route('/upload', methods=['POST'])
@@ -312,7 +312,7 @@ def output2():
    
 @app.route('/Fuzzy',methods=['POST'])
 def fuz():
-    return render_template('index2.html')
+    return render_template('fuzzy.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
