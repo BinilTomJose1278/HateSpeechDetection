@@ -42,7 +42,7 @@ case5=['wish','huge','no','call','damn','photo','free','enjoy','deserv','not','e
 #create subhypergraph from a threshold
 c={}
 speech=[]
-erosion=[] 
+erosionk=[] 
 hatespeech=[]
 nonhatespeech=[]
 listx=[]
@@ -81,6 +81,7 @@ def graph1(s):
   c[a]=word_list
 
 def weights(x):
+  global hatespeech,erosionk,speech,nonhatespeech
   t=0
   y=0
   f=0
@@ -109,11 +110,14 @@ def weights(x):
       y=y+0.5
       f=f+1
   speech.append(x)
-  erosion.append(x)
+  erosionk.append(x)
+  
+
   if((t>0.8 and y>0.3)):
     print(x," : hate speech")
-    graph1(x)
     hatespeech.append(x)
+    graph1(x)
+    
    
   else:
     print(x," : non hate speech")
@@ -229,12 +233,14 @@ def hypergraph2():
 @app.route('/Dilationnodes')
 def dilation():
    #w.r.t nodes
-   global listx
+   global listx,hatespeech
+ 
    for i in hatespeech:
-        words=i.split()
-   for j in words:
+      words=i.split()
+      for j in words:
         if j not in listx:
-            listx.append(j)
+          listx.append(j)
+
    return render_template('dilationnodes.html',listx1=listx)
 
 @app.route('/Dilationedges')
@@ -253,26 +259,28 @@ def dilation1():
 @app.route('/Erosionnodes')
 def erosion1():  
    #erosion w.r.t nodes
-    global nonhatespeech,listk,listx,erosion,listy
+    global nonhatespeech,listk,listx,listy
+  
     for i in nonhatespeech:
-        words=i.split()
-        for j in words:
-            if j not in listk:
-                listk.append(j)
+      words=i.split()
+      for j in words:
+        if j not in listk:
+          listk.append(j)
     for i in listx:
-        if i not in listk:
-            listr.append(i)
+      if i not in listk:
+        listr.append(i)
     return render_template('erosionnodes.html',listy1=listr)
 
 @app.route('/Erosionedges')
 def erosion2(): 
-    for i in listx:
-        for j in erosion:
-            words=j.split()
-            if i in words:
-              if j not in listy:
-                listy.append(j)
-    return render_template('erosionedges.html',speech1=listy)
+        global listx,erosionk
+        for y in erosionk:
+            words=y.split()
+            for k in words:
+              if k not in listx:
+                erosionk.remove(y)
+                break
+        return render_template('erosionedges.html',speech1=erosionk)
 @app.route('/output')
 def output1():
   for i in hatespeech:
