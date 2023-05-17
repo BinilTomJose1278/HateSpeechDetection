@@ -42,6 +42,7 @@ case5=['wish','huge','no','call','damn','photo','free','enjoy','deserv','not','e
 #create subhypergraph from a threshold
 c={}
 speech=[]
+speech11=[]
 erosionk=[] 
 hatespeech=[]
 nonhatespeech=[]
@@ -81,7 +82,7 @@ def graph1(s):
   c[a]=word_list
 
 def weights(x):
-  global hatespeech,erosionk,speech,nonhatespeech
+  global hatespeech,erosionk,speech,nonhatespeech,speech1
   t=0
   y=0
   f=0
@@ -110,8 +111,8 @@ def weights(x):
       y=y+0.5
       f=f+1
   speech.append(x)
+  speech11.append(x)
   erosionk.append(x)
-  
 
   if((t>0.8 and y>0.3)):
     print(x," : hate speech")
@@ -290,7 +291,10 @@ def output1():
         wordslist=y.split()
         if j in wordslist:
           speech.remove(y)
-  return render_template('output.html',speech1=speech)
+  for i in speech11:
+     if i in speech:
+        speech11.remove(i)
+  return render_template('output.html',speech1=speech,speech2=speech11)
    
 @app.route('/outputgraph')
 def output2():
