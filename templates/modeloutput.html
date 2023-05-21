@@ -107,7 +107,13 @@ Generic layout (demo looks)
       *::after {
         box-sizing: border-box;
       }
-
+      .action2 {
+        border: none;
+        outline: none;
+        color: black;
+        font-weight: bolder;
+        background-color: #348fc2;
+      }
       body {
         margin: 0;
         padding: 48px 0;
@@ -187,9 +193,9 @@ Generic layout (demo looks)
           <div class="article-body">
             <h2>SVM</h2>
             <p>{{mod1}}</p>
-            <a href="#" class="read-more">
+            <!-- <a href="#" class="read-more">
               Accuracy : 0.80 <span class="sr-only">about this is some title</span>
-            </a>
+            </a> -->
           </div>
         </div>
       </article>
@@ -205,9 +211,9 @@ Generic layout (demo looks)
           <div class="article-body">
             <h2>Random Forest</h2>
             <p>{{mod2}}</p>
-            <a href="#" class="read-more">
+            <!-- <a href="#" class="read-more">
               Accuracy : 0.79 <span class="sr-only">about this is some title</span>
-            </a>
+            </a> -->
           </div>
         </div>
       </article>
@@ -223,15 +229,15 @@ Generic layout (demo looks)
           <div class="article-body">
             <h2>Logistic Regression</h2>
             <p>{{mod3}}</p>
-            <a href="#" class="read-more">
+            <!-- <a href="#" class="read-more">
               Accuracy : 0.81<span class="sr-only">about this is some title</span>
-            </a>
+            </a> -->
           </div>
         </div>
       </article>
     </section>
     <form action="/Home">
-      <p><input type="submit" value="Home" /></p>
+      <p><input class="action2" type="submit" value="Home" /></p>
     </form>
   </body>
 </html>
