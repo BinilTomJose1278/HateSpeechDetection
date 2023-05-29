@@ -51,6 +51,7 @@ listy=[]
 listk=[]
 listr=[]
 listg=[]
+data1=[]
 @app.route('/')
 def home():
     return render_template('homepage.html')
@@ -190,11 +191,12 @@ def pred():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    global a
+    global a,data1
     a=-1
     csv_file=request.files['csv']
     df = pd.read_csv(csv_file)
     data=df.iloc[:, 0]
+    data1=df.iloc[:, 0]
     data=data.apply(lambda x:cleantext(x))
     data= data.apply(stemming)
     d=data.apply(lambda y:graph(y))
@@ -296,6 +298,41 @@ def output1():
      if i in speech:
         speech11.remove(i)
   return render_template('output.html',speech1=speech,speech2=speech11)
+
+@app.route('/output1')
+def output11():
+  global hatespeech,speech,speech11,data1
+  for i in hatespeech:
+    words=i.split()
+    for j in words:
+      for y in speech:
+        wordslist=y.split()
+        if j in wordslist:
+          speech.remove(y)
+  for i in speech11:
+     if i in speech:
+        speech11.remove(i)
+
+  for j in data1:
+     d=cleantext(j)
+     d=stemming(d)
+     for i in speech:
+        if d==i:
+           
+           speech.remove(i)
+           speech.append(j)
+   
+
+     for i in speech11:
+     
+        if d==i:
+           speech11.remove(i)
+           speech11.append(j)
+          
+           
+          
+  return render_template('output1.html',speech1=speech,speech2=speech11)
+
    
 @app.route('/outputgraph')
 def output2():
@@ -322,7 +359,12 @@ def output2():
 
     # Send the PNG file to the client
   return send_file(png_output, mimetype='image/png')
-   
+
+@app.route('/accuracy',methods=['GET'])
+def accuracy():
+  pathimage='/accuracygraph.jpeg'
+  return render_template('image.html', image_path=pathimage)
+
 @app.route('/Fuzzy',methods=['POST'])
 def fuz():
     return render_template('fuzzy.html')
