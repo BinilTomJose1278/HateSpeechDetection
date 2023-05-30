@@ -360,10 +360,9 @@ def output2():
     # Send the PNG file to the client
   return send_file(png_output, mimetype='image/png')
 
-@app.route('/accuracy',methods=['GET'])
+@app.route('/accuracy',methods=['POST'])
 def accuracy():
-  pathimage='/accuracygraph.jpeg'
-  return render_template('image.html', image_path=pathimage)
+  return render_template('image.html')
 
 @app.route('/Fuzzy',methods=['POST'])
 def fuz():
