@@ -210,7 +210,7 @@ def hypergraph():
     # Draw the graph using matplotlib
     fig, ax = plt.subplots()
     hnx.draw(G, ax=ax)
-    ax.set_title("Main Hypergraph")
+    ax.set_title("Main Hypergraph : Graph created using all the sentences in the dataset")
     # Save the plot to an image file
     png_output = io.BytesIO()
     fig.savefig(png_output, format='png')
@@ -225,7 +225,7 @@ def hypergraph2():
     # Draw the graph using matplotlib
     fig, ax = plt.subplots()
     hnx.draw(G, ax=ax)
-    ax.set_title("Hypergraph X")
+    ax.set_title("Hypergraph X : Hate Speech Sentences above the threshold value")
     # Save the plot to an image file
     png_output = io.BytesIO()
     fig.savefig(png_output, format='png')
@@ -351,7 +351,7 @@ def output2():
     # Draw the graph using matplotlib
   fig, ax = plt.subplots()
   hnx.draw(G, ax=ax)
-  ax.set_title("Final Output Hypergraph")
+  ax.set_title("Final Output Hypergraph : Graph after removing hatespeech ")
 
     # Save the plot to an image file
   png_output = io.BytesIO()

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
-</head>
-<!--<style>
-    .graphl{
-        background-image: url(../static/accuracygraph.jpeg);
+  </head>
+  <style>
+    .image-container {
+      display: flex;
+      justify-content: center; /* Horizontally centers the image */
+      align-items: center; /* Vertically centers the image */
+      /* Set a fixed height for the container and did it  */
     }
-</style>-->
-<body>
-   
-    <img src= "{{url_for('static', filename='accuracygraph.jpeg')}}" > 
-   
-
-</body>
+  </style>
+  <body>
+    <div class="image-container">
+      <img src="{{url_for('static', filename='accuracygraph.jpeg')}}" />
+    </div>
+  </body>
 </html>
