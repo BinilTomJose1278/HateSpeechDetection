@@ -10,6 +10,16 @@
     h1 {
       text-align: center;
     }
+    p {
+      text-align: center;
+      font-weight: bolder;
+    }
+    .r1 {
+      color: #12e1da;
+    }
+    .r2 {
+      color: red;
+    }
     .new-btn {
       width: 130px;
       height: 40px;
@@ -39,7 +49,7 @@
       vertical-align: middle;
       padding-top: 50px;
       text-align: center;
-      border: 4px solid #e11299;
+      border: 4px solid #12e1da;
       margin-right: 30px; /* Adjust this value to set the spacing between items */
     }
     .newbox1 {
@@ -54,7 +64,7 @@
       vertical-align: middle;
       padding-top: 50px;
       text-align: center;
-      border: 4px solid yellow;
+      border: 4px solid rgb(255, 51, 0);
       margin-right: 30px; /* Adjust this value to set the spacing between items */
     }
     .newbox:hover {
@@ -73,6 +83,8 @@
   </style>
   <body style="background-color: white">
     <h1>OUTPUT</h1>
+    <p class="r1">Non hate speech Sentences</p>
+    <p class="r2">Hate Speech Sentences</p>
     <div class="container">
       <ul>
         {% for item in speech1 %}
